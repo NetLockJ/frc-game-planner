@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game-Planner</title>
+    <link defer rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="shortcut icon" href="/assets/greenswerverobot.svg" />
+  </head>
+  <body>
+    <!-- Thank you to the PathPlanner Team for the Field Background -->
+    <img id="field-background" src="field23.png" alt="Field Background" />
+    <svg id="field-canvas">
+      <defs id="canvas-defs">
+        <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+        </marker>
+      </defs>
+    </svg>
+    <svg id="auto" style="display: none;">
+      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      </marker>
+    </svg>
+    <svg id="teleop" style="display: none">
+      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      </marker>
+    </svg>
+    <svg id="endgame" style="display: none;">
+      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      </marker>
+    </svg>
+    <img
+      id="settings"
+      src="icons/gears.svg"
+      onclick="document.getElementById('sidebar').classList.replace('closed', 'open')"
+    />
+    <div id="tools" class="button-bar">
+      <button
+        class="non-active"
+        onclick="setMode(CanvasMode.DRAG)"
+        style="background-image: url('icons/select.svg')"
+      ></button>
+      <button
+        class="non-active"
+        onclick="setMode(CanvasMode.DELETE)"
+        style="background-image: url(icons/delete.svg)"
+      ></button>
+      <button class="non-active"
+      onclick="setMode(CanvasMode.PEN)"
+      style="background-image: url(icons/pen.svg)"></button>
+      <button
+        class="non-active"
+        onclick="setMode(CanvasMode.ARROW)"
+        style="background-image: url(icons/arrow.svg)"
+      ></button>
+      <button
+        id="piece-button"
+        class="non-active"
+        onclick="setMode(CanvasMode.PIECE)"
+        style="background-image: url('23assets/cube.svg')"
+      ></button>
+      <button
+        class="non-active"
+        onclick="setMode(CanvasMode.POLYGON)"
+        style="background-image: url('icons/hexagon.svg')"
+      ></button>
+      <button
+      id="robot-button"
+        class="other-non-active"
+        onclick="setMode(CanvasMode.ROBOT)"
+        style="background-image: url('icons/blueroboticon.svg')"
+      ></button>
+    </div>
+
+    <div id="sidebar" class="closed">
+      <h1 style="margin: 10px;">Settings</h1>
+      <div class="teams">
+        <span>Team 1</span>
+        <input id="team1" type="text">
+      </div>
+      <div class="teams">
+        <span>Team 2</span>
+        <input id="team2" type="text">
+      </div>
+      <div class="teams">
+        <span>Team 3</span>
+        <input id="team3" type="text">
+      </div>
+      <hr style="width: 90%; margin: auto;">
+      <div class="stages">
+        <button id="auto-button" class="selected-stage" onclick="selectStage()">Auto</button>
+        <button id="teleop-button" onclick="selectStage()">Teleop</button>
+        <button id="endgame-button" onclick="selectStage()">Endgame</button>
+      </div>
+      <hr style="width: 90%; margin: auto;">
+      <div class="options">
+        <button onclick="clearField()">Clear</span>
+        <button onclick="resetPlanner()">Reset</span>
+      </div>
+
+
+      <div class="color-selector">
+        <span class="selected-color" id="white-color-selector" onclick="changeColor('#FFF')" style="background-color: white;"></span>
+        <span class="non-selected-color" onclick="changeColor('#F00')" style="background-color: red;"></span>
+        <span class="non-selected-color" onclick="changeColor('#00F')" style="background-color: blue;"></span>
+        <span class="non-selected-color" onclick="changeColor('#FF0')" style="background-color: yellow;"></span>
+        <span class="non-selected-color" onclick="changeColor('#ffa500')" style="background-color: #ffa500;"></span>
+        <span class="non-selected-color" onclick="changeColor('#56ea16')" style="background-color: #56ea16;"></span>
+      </div>
+      <span style="position: absolute; bottom: 5px; right: 10px; color: white">v1.2.2</span>
+    </div>
+  </body>
+</html>
