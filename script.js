@@ -21,11 +21,6 @@ const Alliance = {
   RED: 1,
 };
 
-const PieceMode = {
-  CUBE: 0,
-  CONE: 1,
-};
-
 const CanvasMode = {
   DELETE: 0,
   PEN: 1,
@@ -45,7 +40,6 @@ const GameStage = {
 // ---------- Document Variables ---------- \\
 // States of the actual Webapp, operate to assist with program logic execution
 var allianceColor = Alliance.BLUE;
-var pieceMode = PieceMode.CUBE;
 var currentCanvasMode = CanvasMode.DRAG;
 var selectedColor = "white";
 var currentGameStage = GameStage.AUTO;
@@ -112,9 +106,7 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
         position.x,
         position.y,
         0,
-        pieceMode == PieceMode.CONE
-          ? "23assets/fieldcone.svg"
-          : "23assets/fieldcube.svg",
+        "24assets/fieldnote.svg",
         GAMEPIECE_PIXEL_SIZE
       );
     } else if (currentCanvasMode == CanvasMode.POLYGON) {
@@ -296,12 +288,7 @@ function setMode(mode) {
   selectedTool.classList.replace(addstr + "non-active", addstr + "active");
 
   if (currentCanvasMode == CanvasMode.PIECE && mode == CanvasMode.PIECE) {
-    document.getElementById("piece-button").style.backgroundImage =
-      pieceMode == PieceMode.CONE
-        ? "url(23assets/cube.svg)"
-        : "url(23assets/traffic-cone.svg)";
-    // Invert to other piece number, (0 or 1)
-    pieceMode = (pieceMode + 1) % 2;
+    document.getElementById("piece-button").style.backgroundImage = "url(24assets/note.svg)"
   }
 
   if (currentCanvasMode == CanvasMode.ROBOT && mode == CanvasMode.ROBOT) {
