@@ -12,7 +12,7 @@ Good Luck to all FRC teams!
 - Pen : used for freehand drawing
 - Arrow : used for directional drawing, press for initial arrow point, and drag/release to finish drawing arrow
 - Zone : used to mark a transparent polygon on the field to highlight an area on the field
-- Robot tool : used to place a robot on the field
+- Robot : used to place a robot on the field
 - Gamepiece : used to place a gamepiece on the field
 - Eraser : used to erase elements placed on the field
 - Cursor : used to drag elements around on the field
