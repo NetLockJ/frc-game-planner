@@ -134,6 +134,8 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
           fieldCanvas
         );
 
+        robot.setAttribute("class", (allianceColor == Alliance.RED ? "r" : "b") + "bot");
+
         // push to robots array the newly created robot
         if (allianceColor == Alliance.RED) {
           //TODO: Update Team Numbers!
@@ -265,7 +267,24 @@ fieldCanvas.addEventListener("pointermove", (event) => {
       );
     }
   } else if (currentCanvasMode == CanvasMode.DELETE && event.buttons != 0) {
-    fieldCanvas.removeChild(event.target);
+    isNotRobot = true;
+    // make sure we don't delete robot
+    for(i = 0; i < redRobots.length; i++) {
+      console.log(redRobots.at(i), event.target)
+      if (redRobots.at(i).robotElement == event.target) {
+        isNotRobot = false;
+      }
+    }
+
+    for(i = 0; i < blueRobots.length; i++) {
+      if (blueRobots.at(i).robotElement == event.target) {
+        isNotRobot = false;
+      }
+    }
+
+    if(isNotRobot) {
+      fieldCanvas.removeChild(event.target);
+    }
   }
 });
 
@@ -315,40 +334,6 @@ function addImage(xpos, ypos, angle, src, pixelratio, parent) {
 
   parent.appendChild(imageElement);
   makeDragable(imageElement);
-
-  return imageElement;
-}
-
-function addImageWithoutDrag(xpos, ypos, angle, src, pixelratio, parent) {
-  var imageElement = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "image"
-  );
-  // calculated pixel ratio for element
-  var calcRatio = pixelratio * heightRatio;
-
-  // Calculated center positions
-  var centerX = xpos - calcRatio / 2;
-  var centerY = ypos - calcRatio / 2;
-
-  // Set attrs to imageElement
-  gsap.set(imageElement, {
-    attr: {
-      href: src,
-      x: centerX,
-      y: centerY,
-      height: calcRatio,
-      width: calcRatio,
-    },
-  });
-
-  // Apply rotation transform around center
-  imageElement.setAttribute(
-    "transform",
-    "rotate(" + angle + "," + xpos + "," + ypos + ")"
-  );
-
-  parent.appendChild(imageElement);
 
   return imageElement;
 }
@@ -472,6 +457,19 @@ function selectStage() {
   // display other stage on field canvas
   fieldCanvas.innerHTML = document.getElementById(currentGameStage).innerHTML;
 
+  blueRobots = []
+  redRobots = []
+
+  for(i = 0; i < fieldCanvas.getElementsByClassName("bbot").length; i++) {
+    blueRobots.push(new Robot("b", fieldCanvas.getElementsByClassName("bbot").item(i), null));
+    blueRobots.at(i).updateDriveTrainByString(document.getElementById("b" + (i + 1) + "d").value);
+  }
+
+  for(i = 0; i < fieldCanvas.getElementsByClassName("rbot").length; i++) {
+    redRobots.push(new Robot("r", fieldCanvas.getElementsByClassName("rbot").item(i), null));
+    redRobots.at(i).updateDriveTrainByString(document.getElementById("b" + (i + 1) + "d").value);
+  }
+
   fieldCanvas.childNodes.forEach((node) => {
     makeDragable(node);
   });
@@ -504,6 +502,14 @@ class Robot {
       null,
       "href",
       "assets/" + this.color + event.target.value + ".svg"
+    );
+  }
+
+  updateDriveTrainByString(type) {
+    this.robotElement.setAttributeNS(
+      null,
+      "href",
+      "assets/" + this.color + type + ".svg"
     );
   }
 
