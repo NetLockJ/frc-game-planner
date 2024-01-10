@@ -24,10 +24,6 @@ Good Luck to all FRC teams!
 - Reset will completely reset everything than can be changed and will clear all game stage fields
 - Colors will change the color of the pen, arrows, and zone polygons
 
-## Known Bugs
-- Arrow tip color doesn't appear as the currently selected color (WIP)
-
-
-
-
-
+## Currently in the works
+- Team Numbers
+- Saving
