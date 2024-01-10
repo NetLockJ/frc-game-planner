@@ -24,6 +24,13 @@ head, body {
     top: 0px;
 }
 
+#team-table {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+}
+
 #settings {
     position: absolute;
     top: 2%;
@@ -75,6 +82,7 @@ head, body {
     height: 100vh;
     background-color: rgba(40, 40, 40, 0.8);
     transition: 0.5s;
+    overflow-y: scroll;
 }
 
 #sidebar {
@@ -113,7 +121,7 @@ head, body {
 }
 
 .open {
-    width: 45%;
+    width: 50%;
     border-style: solid;
     border-color: #FFF;
     border-radius: 5px 0 0 5px;

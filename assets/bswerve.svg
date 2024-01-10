@@ -1,0 +1,19 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3_3)">
+<rect x="5" y="5" width="50" height="50" fill="#222222"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.47715 0 0 4.47715 0 10V50C0 55.5228 4.47715 60 10 60H50C55.5228 60 60 55.5228 60 50V10C60 4.47715 55.5228 0 50 0H10ZM15 5C9.47715 5 5 9.47715 5 15V45C5 50.5228 9.47715 55 15 55H45C50.5228 55 55 50.5228 55 45V15C55 9.47715 50.5228 5 45 5H15Z" fill="#0066B3"/>
+<path d="M8 15C8 11.134 11.134 8 15 8H20C21.1046 8 22 8.89543 22 10V10C22 16.6274 16.6274 22 10 22V22C8.89543 22 8 21.1046 8 20V15Z" fill="#A1A1A1"/>
+<rect x="15.364" y="9" width="5" height="9" rx="1" transform="rotate(45 15.364 9)" fill="#363636" stroke="black"/>
+<path d="M52 45C52 48.866 48.866 52 45 52H40C38.8954 52 38 51.1046 38 50V50C38 43.3726 43.3726 38 50 38V38C51.1046 38 52 38.8954 52 40V45Z" fill="#A1A1A1"/>
+<rect x="44.636" y="51" width="5" height="9" rx="1" transform="rotate(-135 44.636 51)" fill="#363636" stroke="black"/>
+<path d="M15 52C11.134 52 8 48.866 8 45V40C8 38.8954 8.89543 38 10 38V38C16.6274 38 22 43.3726 22 50V50C22 51.1046 21.1046 52 20 52H15Z" fill="#A1A1A1"/>
+<rect x="9" y="44.636" width="5" height="9" rx="1" transform="rotate(-45 9 44.636)" fill="#363636" stroke="black"/>
+<path d="M45 8C48.866 8 52 11.134 52 15V20C52 21.1046 51.1046 22 50 22V22C43.3726 22 38 16.6274 38 10V10C38 8.89543 38.8954 8 40 8L45 8Z" fill="#A1A1A1"/>
+<rect x="51" y="15.364" width="5" height="9" rx="1" transform="rotate(135 51 15.364)" fill="#363636" stroke="black"/>
+</g>
+<defs>
+<clipPath id="clip0_3_3">
+<rect width="60" height="60" fill="white"/>
+</clipPath>
+</defs>
+</svg>

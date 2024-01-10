@@ -7,12 +7,28 @@ const background = document.getElementById("field-background");
 // ---------- Constants ---------- \\
 
 const ROBOT_PIXEL_SIZE = 60;
-const GAMEPIECE_PIXEL_SIZE = 30;
+const GAMEPIECE_PIXEL_SIZE = 28;
 
 // HTML for the arrowhead marker, which needs to be carried over through a clear/reset
-const MARKER_SVG =
-  ' <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">\n' +
-  '<polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />\n</marker>';
+const MARKER_SVG = "<marker id=\"ahFFF\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#FFF\" />\n" + //
+"        </marker>\n" + //
+"        <marker id=\"ah00F\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#00F\" />\n" + //
+"        </marker>\n" + //
+"        <marker id=\"ahF00\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#F00\" />\n" + //
+"        </marker>\n" + //
+"        <marker id=\"ahFF0\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#FF0\" />\n" + //
+"        </marker>\n" + //
+"        <marker id=\"ahffa500\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#ffa500\" />\n" + //
+"        </marker>\n" + //
+"        <marker id=\"ah56ea16\" markerWidth=\"5\" markerHeight=\"5\" refX=\"2\" refY=\"2\" orient=\"auto\">\n" + //
+"          <polygon id=\"arrow-polygon\" points=\"0 0, 5 2, 0 4\" fill=\"#56ea16\" />\n" + //
+"        </marker>\n" + //
+"        <marker>";
 
 // ---------- Document (Enums) ---------- \\
 
@@ -41,8 +57,12 @@ const GameStage = {
 // States of the actual Webapp, operate to assist with program logic execution
 var allianceColor = Alliance.BLUE;
 var currentCanvasMode = CanvasMode.DRAG;
-var selectedColor = "white";
+var selectedColor = "#FFF";
 var currentGameStage = GameStage.AUTO;
+
+// arrays of both alliance robots
+var redRobots = [];
+var blueRobots = [];
 
 // Good height ratio canvas px / window height px (needs to be var so it can be slightly adjusted
 // on document load)
@@ -90,16 +110,38 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
     var position = getMousePosition(event);
 
     if (currentCanvasMode == CanvasMode.ROBOT) {
-      // place robot
-      addImage(
-        position.x,
-        position.y,
-        90,
-        allianceColor == Alliance.RED
-          ? "assets/redtankrobot.svg"
-          : "assets/bluetankrobot.svg",
-        ROBOT_PIXEL_SIZE
-      );
+      // place robot if no more than three already
+      if (
+        (allianceColor == Alliance.RED && redRobots.length < 3) ||
+        (allianceColor == Alliance.BLUE && blueRobots.length < 3)
+      ) {
+
+        driveConfig =
+          allianceColor == Alliance.RED
+            ? "r" + (redRobots.length + 1)
+            : "b" + (blueRobots.length + 1);
+
+        var robot = addImage(
+          position.x,
+          position.y,
+          90,
+          // get current drivetrain choice in settings based on alliance ex. 'b2d' is blue 2's drivetrain choice
+          "assets/" +
+            (allianceColor == Alliance.RED ? "r" : "b") +
+            document.getElementById(driveConfig + "d").value +
+            ".svg",
+          ROBOT_PIXEL_SIZE,
+          fieldCanvas
+        );
+
+        // push to robots array the newly created robot
+        if (allianceColor == Alliance.RED) {
+          //TODO: Update Team Numbers!
+          redRobots.push(new Robot("r", robot, null));
+        } else {
+          blueRobots.push(new Robot("b", robot, null));
+        }
+      }
     } else if (currentCanvasMode == CanvasMode.PIECE) {
       // place gamepiece
       addImage(
@@ -107,7 +149,8 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
         position.y,
         0,
         "24assets/fieldnote.svg",
-        GAMEPIECE_PIXEL_SIZE
+        GAMEPIECE_PIXEL_SIZE,
+        fieldCanvas
       );
     } else if (currentCanvasMode == CanvasMode.POLYGON) {
       if (currentPolygon == null) {
@@ -155,7 +198,10 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
         });
 
         currentArrow.setAttribute("stroke-width", 4);
-        currentArrow.setAttribute("marker-end", "url(#arrowhead)");
+        currentArrow.setAttribute(
+          "marker-end",
+          "url(#ah" + selectedColor.split("#")[1] + ")"
+        );
         currentArrow.setAttribute("stroke-linecap", "round");
 
         fieldCanvas.appendChild(currentArrow, fieldCanvas.firstChild);
@@ -238,7 +284,7 @@ fieldCanvas.addEventListener("pointerup", (event) => {
  * @param {*} src Path to image file
  * @param {*} pixelratio height ratio to place image on field as (~60 for robot and ~25 for gamepiece)
  */
-function addImage(xpos, ypos, angle, src, pixelratio) {
+function addImage(xpos, ypos, angle, src, pixelratio, parent) {
   var imageElement = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "image"
@@ -266,8 +312,45 @@ function addImage(xpos, ypos, angle, src, pixelratio) {
     "transform",
     "rotate(" + angle + "," + xpos + "," + ypos + ")"
   );
-  fieldCanvas.appendChild(imageElement);
+
+  parent.appendChild(imageElement);
   makeDragable(imageElement);
+
+  return imageElement;
+}
+
+function addImageWithoutDrag(xpos, ypos, angle, src, pixelratio, parent) {
+  var imageElement = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "image"
+  );
+  // calculated pixel ratio for element
+  var calcRatio = pixelratio * heightRatio;
+
+  // Calculated center positions
+  var centerX = xpos - calcRatio / 2;
+  var centerY = ypos - calcRatio / 2;
+
+  // Set attrs to imageElement
+  gsap.set(imageElement, {
+    attr: {
+      href: src,
+      x: centerX,
+      y: centerY,
+      height: calcRatio,
+      width: calcRatio,
+    },
+  });
+
+  // Apply rotation transform around center
+  imageElement.setAttribute(
+    "transform",
+    "rotate(" + angle + "," + xpos + "," + ypos + ")"
+  );
+
+  parent.appendChild(imageElement);
+
+  return imageElement;
 }
 
 function setMode(mode) {
@@ -288,7 +371,8 @@ function setMode(mode) {
   selectedTool.classList.replace(addstr + "non-active", addstr + "active");
 
   if (currentCanvasMode == CanvasMode.PIECE && mode == CanvasMode.PIECE) {
-    document.getElementById("piece-button").style.backgroundImage = "url(24assets/note.svg)"
+    document.getElementById("piece-button").style.backgroundImage =
+      "url(24assets/note.svg)";
   }
 
   if (currentCanvasMode == CanvasMode.ROBOT && mode == CanvasMode.ROBOT) {
@@ -404,5 +488,26 @@ function resetPlanner() {
     document.getElementById(GameStage.TELEOP).innerHTML = MARKER_SVG;
     document.getElementById(GameStage.ENDGAME).innerHTML = MARKER_SVG;
     fieldCanvas.innerHTML = MARKER_SVG;
+  }
+}
+
+class Robot {
+  constructor(color, robotElement, numberElement) {
+    this.robotElement = robotElement;
+    this.color = color;
+    this.numberElement = numberElement;
+  }
+
+  // Update Drivetrain to newly selected
+  updateDriveTrain(event) {
+    this.robotElement.setAttributeNS(
+      null,
+      "href",
+      "assets/" + this.color + event.target.value + ".svg"
+    );
+  }
+
+  updateTeamNumber(event) {
+    this.numberElement.innerHTML = event.target.value;
   }
 }

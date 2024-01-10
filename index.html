@@ -7,32 +7,96 @@
     <link defer rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="shortcut icon" href="/assets/greenswerverobot.svg" />
+    <link rel="shortcut icon" href="/assets/greenswerve.svg" />
   </head>
   <body>
     <!-- Thank you to the PathPlanner Team for the Field Background! -->
     <img id="field-background" src="field24.png" alt="Field Background" />
     <svg id="field-canvas">
       <defs id="canvas-defs">
-        <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+        <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
         </marker>
+        <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
+        </marker>
+        <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
+        </marker>
+        <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
+        </marker>
+        <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
+        </marker>
+        <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+          <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
+        </marker>
+        <marker>
       </defs>
     </svg>
     <svg id="auto" style="display: none;">
-      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
       </marker>
+      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
+      </marker>
+      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
+      </marker>
+      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
+      </marker>
+      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
+      </marker>
+      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
+      </marker>
+      <marker>
     </svg>
     <svg id="teleop" style="display: none">
-      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
       </marker>
+      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
+      </marker>
+      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
+      </marker>
+      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
+      </marker>
+      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
+      </marker>
+      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
+      </marker>
+      <marker>
     </svg>
     <svg id="endgame" style="display: none;">
-      <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="context-fill" />
+      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
       </marker>
+      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
+      </marker>
+      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
+      </marker>
+      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
+      </marker>
+      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
+      </marker>
+      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
+        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
+      </marker>
+      <marker>
     </svg>
     <img
       id="settings"
@@ -79,18 +143,67 @@
 
     <div id="sidebar" class="closed">
       <h1 style="margin: 10px;">Settings</h1>
-      <div class="teams">
-        <span>Team 1</span>
-        <input id="team1" type="text">
-      </div>
-      <div class="teams">
-        <span>Team 2</span>
-        <input id="team2" type="text">
-      </div>
-      <div class="teams">
-        <span>Team 3</span>
-        <input id="team3" type="text">
-      </div>
+      <hr style="width: 90%; margin: auto;">
+      <table id="team-table">
+        <tr>
+          <th style="color: #3172e0; font-weight: 800;">Blue Alliance</th>
+          <th style="color: #e03131; font-weight: 800;">Red Alliance</th>
+        </tr>
+        <tr>
+          <td>
+            <input id="b1" type="number" placeholder="Blue 1" onchange="blueRobots.at(0).updateTeamNumber(event)"> 
+            <select name="drivetrain" id="b1d" onchange="blueRobots.at(0).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+          <td>
+            <input id="r1" type="number" placeholder="Red 1" onchange="redRobots.at(0).updateTeamNumber(event)">
+            <select name="drivetrain" id="r1d" onchange="redRobots.at(0).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="b2" type="number" placeholder="Blue 2" onchange="blueRobots.at(1).updateTeamNumber(event)">
+            <select name="drivetrain" id="b2d" onchange="blueRobots.at(1).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+          <td>
+            <input id="r2" type="number" placeholder="Red 2" onchange="redRobots.at(1).updateTeamNumber(event)">
+            <select name="drivetrain" id="r2d" onchange="redRobots.at(1).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="b3" type="number" placeholder="Blue 3" onchange="blueRobots.at(2).updateTeamNumber(event)">
+            <select name="drivetrain" id="b3d" onchange="blueRobots.at(2).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+          <td>
+            <input id="r3" type="number" placeholder="Red 3" onchange="redRobots.at(2).updateTeamNumber(event)">
+            <select name="drivetrain" id="r3d" onchange="redRobots.at(2).updateDriveTrain(event)">
+              <option value="tank">Tank</option>
+              <option value="mechanum">Mechanum</option>
+              <option value="swerve">Swerve</option>
+            </select>
+          </td>
+        </tr>
+      </table>
       <hr style="width: 90%; margin: auto;">
       <div class="stages">
         <button id="auto-button" class="selected-stage" onclick="selectStage()">Auto</button>
@@ -104,7 +217,7 @@
       </div>
 
 
-      <div class="color-selector">
+      <div class="color-selector" style="padding-bottom: 75px;">
         <span class="selected-color" id="white-color-selector" onclick="changeColor('#FFF')" style="background-color: white;"></span>
         <span class="non-selected-color" onclick="changeColor('#F00')" style="background-color: red;"></span>
         <span class="non-selected-color" onclick="changeColor('#00F')" style="background-color: blue;"></span>
@@ -112,7 +225,7 @@
         <span class="non-selected-color" onclick="changeColor('#ffa500')" style="background-color: #ffa500;"></span>
         <span class="non-selected-color" onclick="changeColor('#56ea16')" style="background-color: #56ea16;"></span>
       </div>
-      <span style="position: absolute; bottom: 5px; right: 10px; color: white">v1.2.2</span>
+      <span style="position: absolute; bottom: 5px; right: 10px; color: white">v2.0.0</span>
     </div>
   </body>
 </html>
