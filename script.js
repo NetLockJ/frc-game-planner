@@ -467,7 +467,7 @@ function selectStage() {
 
   for(i = 0; i < fieldCanvas.getElementsByClassName("rbot").length; i++) {
     redRobots.push(new Robot("r", fieldCanvas.getElementsByClassName("rbot").item(i), null));
-    redRobots.at(i).updateDriveTrainByString(document.getElementById("b" + (i + 1) + "d").value);
+    redRobots.at(i).updateDriveTrainByString(document.getElementById("r" + (i + 1) + "d").value);
   }
 
   fieldCanvas.childNodes.forEach((node) => {
