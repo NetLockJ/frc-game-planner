@@ -266,23 +266,8 @@ fieldCanvas.addEventListener("pointermove", (event) => {
           " "
       );
     }
-  } else if (currentCanvasMode == CanvasMode.DELETE && event.buttons != 0) {
-    isNotRobot = true;
-    // make sure we don't delete robot
-    for(i = 0; i < redRobots.length; i++) {
-      console.log(redRobots.at(i), event.target)
-      if (redRobots.at(i).robotElement == event.target) {
-        isNotRobot = false;
-      }
-    }
-
-    for(i = 0; i < blueRobots.length; i++) {
-      if (blueRobots.at(i).robotElement == event.target) {
-        isNotRobot = false;
-      }
-    }
-
-    if(isNotRobot) {
+  } else if (currentCanvasMode == CanvasMode.DELETE && event.buttons != 0 && event.target != fieldCanvas) {
+    if(!event.target.classList.contains("rbot") && !event.target.classList.contains("bbot")) {
       fieldCanvas.removeChild(event.target);
     }
   }
@@ -400,8 +385,12 @@ function makeDragable(element) {
 // (Adapted from code here: https://www.petercollingridge.co.uk/tutorials/svg/interactive/dragging/)
 function selectElement(evt) {
   if (currentCanvasMode == CanvasMode.DELETE) {
-    // if element is clicked on and is delete mode, delete it
-    fieldCanvas.removeChild(evt.target);
+    // if element is clicked on and is delete mode, delete it (unless it is a robot)
+
+    if(!(evt.target.classList.contains("rbot") || evt.target.classList.contains("bbot"))) {
+      fieldCanvas.removeChild(evt.target);
+    }
+    
   } else if (currentCanvasMode == CanvasMode.DRAG) {
     selectedElement = evt.target;
     offset = getMousePosition(evt);
@@ -478,6 +467,9 @@ function selectStage() {
 function clearField() {
   document.getElementById(currentGameStage).innerHTML = MARKER_SVG;
   fieldCanvas.innerHTML = MARKER_SVG;
+
+  redRobots = [];
+  blueRobots = [];
 }
 
 function resetPlanner() {
