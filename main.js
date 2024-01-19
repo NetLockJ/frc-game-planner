@@ -243,13 +243,21 @@ function selectStage() {
   redRobots = []
 
   for(i = 0; i < stageCanvas.getElementsByClassName("bbot").length; i++) {
-    blueRobots.push(new Robot("b", stageCanvas.getElementsByClassName("bbot").item(i), null));
+    blueRobots.push(new Robot("b", stageCanvas.getElementsByClassName("bbot").item(i),
+    stageCanvas.getElementsByClassName("bnum").item(i)));
+
     blueRobots.at(i).updateDriveTrainByString(document.getElementById("b" + (i + 1) + "d").value);
+    blueRobots.at(i).updateTeamNumberByString(document.getElementById("b" + (i + 1)).value);
+
   }
 
   for(i = 0; i < stageCanvas.getElementsByClassName("rbot").length; i++) {
-    redRobots.push(new Robot("r", stageCanvas.getElementsByClassName("rbot").item(i), null));
+    redRobots.push(new Robot("r", stageCanvas.getElementsByClassName("rbot").item(i), 
+    stageCanvas.getElementsByClassName("rnum").item(i)));
+
     redRobots.at(i).updateDriveTrainByString(document.getElementById("r" + (i + 1) + "d").value);
+    redRobots.at(i).updateTeamNumberByString(document.getElementById("r" + (i + 1)).value);
+
   }
 
   stageCanvas.childNodes.forEach((node) => {
@@ -300,5 +308,9 @@ class Robot {
 
   updateTeamNumber(event) {
     this.numberElement.innerHTML = event.target.value;
+  }
+
+  updateTeamNumberByString(number) {
+    this.numberElement.innerHTML = number;
   }
 }

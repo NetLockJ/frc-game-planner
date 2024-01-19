@@ -85,6 +85,7 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
         teamNumber.setAttribute("fill", "white");
         teamNumber.setAttribute("dominant-baseline", "middle");
         teamNumber.setAttribute("text-anchor", "middle");
+        teamNumber.classList.add((allianceColor == Alliance.RED ? "r" : "b") + "num");
 
         robotGroup.appendChild(teamNumber);
         stageCanvas.appendChild(robotGroup);
