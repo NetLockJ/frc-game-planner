@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game-Planner</title>
     <link defer rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="shortcut icon" href="/assets/greenswerve.svg" />
+    <script defer src="main.js"></script>
+    <script defer src="listeners.js"></script>
+    <link rel="shortcut icon" href="./assets/greenswerve.svg" />
   </head>
   <body>
-    <!-- Thank you to the PathPlanner Team for the Field Background! -->
+    <!-- Thank you to the PathPlanner for allowing use of the field background! -->
     <img id="field-background" src="field24.png" alt="Field Background" />
     <svg id="field-canvas">
       <defs id="canvas-defs">
@@ -34,70 +34,11 @@
         </marker>
         <marker>
       </defs>
+      <g id="stage-canvas"></g>
     </svg>
-    <svg id="auto" style="display: none;">
-      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
-      </marker>
-      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
-      </marker>
-      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
-      </marker>
-      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
-      </marker>
-      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
-      </marker>
-      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
-      </marker>
-      <marker>
-    </svg>
-    <svg id="teleop" style="display: none">
-      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
-      </marker>
-      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
-      </marker>
-      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
-      </marker>
-      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
-      </marker>
-      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
-      </marker>
-      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
-      </marker>
-      <marker>
-    </svg>
-    <svg id="endgame" style="display: none;">
-      <marker id="ahFFF" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FFF" />
-      </marker>
-      <marker id="ah00F" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#00F" />
-      </marker>
-      <marker id="ahF00" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#F00" />
-      </marker>
-      <marker id="ahFF0" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#FF0" />
-      </marker>
-      <marker id="ahffa500" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#ffa500" />
-      </marker>
-      <marker id="ah56ea16" markerWidth="5" markerHeight="5" refX="2" refY="2" orient="auto">
-        <polygon id="arrow-polygon" points="0 0, 5 2, 0 4" fill="#56ea16" />
-      </marker>
-      <marker>
-    </svg>
+    <svg id="auto" style="display: none;"></svg>
+    <svg id="teleop" style="display: none"></svg>
+    <svg id="endgame" style="display: none;"></svg>
     <img
       id="settings"
       src="icons/gears.svg"
