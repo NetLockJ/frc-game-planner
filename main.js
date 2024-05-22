@@ -1,7 +1,7 @@
 // SVG element placed on field
 const fieldCanvas = document.getElementById("field-canvas");
 
-const stageCanvas = document.getElementById("stage-canvas")
+const stageCanvas = document.getElementById("stage-canvas");
 
 // Field background itself
 const background = document.getElementById("field-background");

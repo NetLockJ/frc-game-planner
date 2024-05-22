@@ -7,6 +7,7 @@
     <link defer rel="stylesheet" href="style.css" />
     <script defer src="main.js"></script>
     <script defer src="listeners.js"></script>
+    <script defer src="tba.js"></script>
     <link rel="shortcut icon" href="./assets/greenswerve.svg" />
   </head>
   <body>
@@ -95,7 +96,7 @@
             <input id="b1" type="number" placeholder="Blue 1" onchange="blueRobots.at(0).updateTeamNumber(event)"> 
             <select name="drivetrain" id="b1d" onchange="blueRobots.at(0).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
@@ -103,7 +104,7 @@
             <input id="r1" type="number" placeholder="Red 1" onchange="redRobots.at(0).updateTeamNumber(event)">
             <select name="drivetrain" id="r1d" onchange="redRobots.at(0).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
@@ -113,7 +114,7 @@
             <input id="b2" type="number" placeholder="Blue 2" onchange="blueRobots.at(1).updateTeamNumber(event)">
             <select name="drivetrain" id="b2d" onchange="blueRobots.at(1).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
@@ -121,7 +122,7 @@
             <input id="r2" type="number" placeholder="Red 2" onchange="redRobots.at(1).updateTeamNumber(event)">
             <select name="drivetrain" id="r2d" onchange="redRobots.at(1).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
@@ -131,7 +132,7 @@
             <input id="b3" type="number" placeholder="Blue 3" onchange="blueRobots.at(2).updateTeamNumber(event)">
             <select name="drivetrain" id="b3d" onchange="blueRobots.at(2).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
@@ -139,24 +140,41 @@
             <input id="r3" type="number" placeholder="Red 3" onchange="redRobots.at(2).updateTeamNumber(event)">
             <select name="drivetrain" id="r3d" onchange="redRobots.at(2).updateDriveTrain(event)">
               <option value="tank">Tank</option>
-              <option value="mechanum">Mechanum</option>
+              <option value="Mecanum">Mecanum</option>
               <option value="swerve">Swerve</option>
             </select>
           </td>
         </tr>
       </table>
+
+      <hr style="width: 90%; margin: auto;">
+      <div style="display: flex; justify-content: center;">
+        <input id="event-input" placeholder="Event..." list="events" onchange="setEvent(this)">
+        <datalist id="events"></datalist>
+        <span style="width: 10px;"></span>
+        <select name="Match" id="match-select" onchange="if (this.selectedIndex) updateTeams(this);">
+          <option selected>Match...</option>
+        </select>
+      </div>
+
       <hr style="width: 90%; margin: auto;">
       <div class="stages">
         <button id="auto-button" class="selected-stage" onclick="selectStage()">Auto</button>
         <button id="teleop-button" onclick="selectStage()">Teleop</button>
         <button id="endgame-button" onclick="selectStage()">Endgame</button>
       </div>
+
       <hr style="width: 90%; margin: auto;">
       <div class="options">
         <button onclick="clearField()">Clear</span>
         <button onclick="resetPlanner()">Reset</span>
       </div>
 
+      <hr style="width: 90%; margin: auto;">
+      <div class="options">
+        <button onclick="loadFile()">Load</span>
+        <button onclick="save()">Save</span>
+      </div>
 
       <div class="color-selector" style="padding-bottom: 75px;">
         <span class="selected-color" id="white-color-selector" onclick="changeColor('#FFF')" style="background-color: white;"></span>
@@ -166,7 +184,7 @@
         <span class="non-selected-color" onclick="changeColor('#ffa500')" style="background-color: #ffa500;"></span>
         <span class="non-selected-color" onclick="changeColor('#56ea16')" style="background-color: #56ea16;"></span>
       </div>
-      <span style="position: absolute; bottom: 5px; right: 10px; color: white">v2.0.1</span>
+      <span id="version">v2.1.0</span>
     </div>
   </body>
 </html>

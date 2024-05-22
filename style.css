@@ -5,6 +5,25 @@ head, body {
     padding: 0;
 }
 
+button, th, select, h1, input {
+    font-family: monospace;
+}
+
+.hidden {
+    display: none;
+}
+
+#setup-block {
+    position: absolute;
+    height: 60%;
+    width: 40%;
+    transform: translateX(calc(50vw - 50%));
+    top: 20%;
+    background-color: rgba(66, 66, 66, 0.95);
+    border-radius: 6px;
+    box-shadow: 0px 0px 200px #515760;
+}
+
 #field-background {
     user-select: none;
     max-height: 100%;
@@ -83,6 +102,7 @@ head, body {
     background-color: rgba(40, 40, 40, 0.8);
     transition: 0.5s;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #sidebar {
@@ -161,10 +181,23 @@ head, body {
 .options button {
     background-color: black;
     color: white;
-    width: 49%;
+    width: 48%;
     margin: auto;
     padding: 3px;
+    margin-left: 3px;
     display: inline-block;
     border: solid white 2px;
     font-weight: 600;
+}
+
+#event-input {
+    width: 40%;
+}
+
+#version {
+    position: fixed; 
+    bottom: 5px; 
+    right: 5px; 
+    color: rgba(255, 255, 255, 0.25);
+    font-family: monospace;
 }
