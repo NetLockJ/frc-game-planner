@@ -38,10 +38,11 @@ Good Luck to all FRC teams!
 - Clear will clear the current selected game stage mode (If in Auto, Auto will be cleared)
 - Reset will completely reset everything than can be changed and will clear all game stage fields
 - Colors will change the color of the pen, arrows, and zone polygons
+- Save/Load currently do nothing, just there for whenever support gets added for them
 
-# Version 2.0.1 changes
-- Implement team number options
-- Organize JS
+# Version 2.1.0 changes
+- TBA support for autofilling matches
+- Style changes and various improvments
 
 ## In the works
-- Saving
+- Saving/Loading Files
