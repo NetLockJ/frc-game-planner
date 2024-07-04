@@ -85,6 +85,8 @@ window.onload = function () {
   );
 };
 
+document.onload = () => {document.getElementById("event-input").value = "";}
+
 /**
  * Places an image on the field, centered at xpos/ypos with specified rotation
  * @param {*} xpos Middle x position of image
@@ -279,6 +281,11 @@ function resetPlanner() {
     document.getElementById(GameStage.TELEOP).innerHTML = "";
     document.getElementById(GameStage.ENDGAME).innerHTML = "";
     stageCanvas.innerHTML = "";
+
+    for(i = 1; i <= 3; i++) {
+      document.getElementById("r" + i).value = "";    
+      document.getElementById("b" + i).value = "";
+    }
   }
 }
 

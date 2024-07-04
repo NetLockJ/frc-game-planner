@@ -74,9 +74,19 @@ function updateTeams(element) {
         if(selectedMatch == match.key.split("_")[1]) {
             alliances = match.alliances;
             for(i = 1; i <= 3; i++) {
+              console.log(element, element.value);
                 // put team numbers in robot number elements
                 document.getElementById("r" + i).value = alliances.red.team_keys[i - 1].split("frc")[1];
+                
                 document.getElementById("b" + i).value = alliances.blue.team_keys[i - 1].split("frc")[1];
+            }
+
+            for(i = 0; i < redRobots.length; i++) {
+              redRobots.at(i).updateTeamNumberByString(alliances.red.team_keys[i].split("frc")[1]);
+            }
+
+            for(i = 0; i < blueRobots.length; i++) {
+              blueRobots.at(i).updateTeamNumberByString(alliances.blue.team_keys[i].split("frc")[1]);
             }
         }
     })

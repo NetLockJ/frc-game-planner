@@ -93,7 +93,7 @@
         </tr>
         <tr>
           <td>
-            <input id="b1" type="number" placeholder="Blue 1" onchange="blueRobots.at(0).updateTeamNumber(event)"> 
+            <input id="b1" type="number" placeholder="Blue 1" autocomplete="off" onchange="blueRobots.at(0).updateTeamNumber(event)"> 
             <select name="drivetrain" id="b1d" onchange="blueRobots.at(0).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -101,7 +101,7 @@
             </select>
           </td>
           <td>
-            <input id="r1" type="number" placeholder="Red 1" onchange="redRobots.at(0).updateTeamNumber(event)">
+            <input id="r1" type="number" placeholder="Red 1" autocomplete="off" onchange="redRobots.at(0).updateTeamNumber(event)">
             <select name="drivetrain" id="r1d" onchange="redRobots.at(0).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -111,7 +111,7 @@
         </tr>
         <tr>
           <td>
-            <input id="b2" type="number" placeholder="Blue 2" onchange="blueRobots.at(1).updateTeamNumber(event)">
+            <input id="b2" type="number" placeholder="Blue 2" autocomplete="off" onchange="blueRobots.at(1).updateTeamNumber(event)">
             <select name="drivetrain" id="b2d" onchange="blueRobots.at(1).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -119,7 +119,7 @@
             </select>
           </td>
           <td>
-            <input id="r2" type="number" placeholder="Red 2" onchange="redRobots.at(1).updateTeamNumber(event)">
+            <input id="r2" type="number" placeholder="Red 2" autocomplete="off" onchange="redRobots.at(1).updateTeamNumber(event)">
             <select name="drivetrain" id="r2d" onchange="redRobots.at(1).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <td>
-            <input id="b3" type="number" placeholder="Blue 3" onchange="blueRobots.at(2).updateTeamNumber(event)">
+            <input id="b3" type="number" placeholder="Blue 3" autocomplete="off" onchange="blueRobots.at(2).updateTeamNumber(event)">
             <select name="drivetrain" id="b3d" onchange="blueRobots.at(2).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -137,7 +137,7 @@
             </select>
           </td>
           <td>
-            <input id="r3" type="number" placeholder="Red 3" onchange="redRobots.at(2).updateTeamNumber(event)">
+            <input id="r3" type="number" placeholder="Red 3" autocomplete="off" onchange="redRobots.at(2).updateTeamNumber(event)">
             <select name="drivetrain" id="r3d" onchange="redRobots.at(2).updateDriveTrain(event)">
               <option value="tank">Tank</option>
               <option value="Mecanum">Mecanum</option>
@@ -149,10 +149,10 @@
 
       <hr style="width: 90%; margin: auto;">
       <div style="display: flex; justify-content: center;">
-        <input id="event-input" placeholder="Event..." list="events" onchange="setEvent(this)">
+        <input id="event-input" autocomplete="off" placeholder="Event..." list="events" onchange="setEvent(this)">
         <datalist id="events"></datalist>
         <span style="width: 10px;"></span>
-        <select name="Match" id="match-select" onchange="if (this.selectedIndex) updateTeams(this);">
+        <select name="Match" id="match-select" onchange="updateTeams(this)">
           <option selected>Match...</option>
         </select>
       </div>
@@ -184,7 +184,7 @@
         <span class="non-selected-color" onclick="changeColor('#ffa500')" style="background-color: #ffa500;"></span>
         <span class="non-selected-color" onclick="changeColor('#56ea16')" style="background-color: #56ea16;"></span>
       </div>
-      <span id="version">v2.1.0</span>
+      <span id="version">v2.1.1</span>
     </div>
   </body>
 </html>
