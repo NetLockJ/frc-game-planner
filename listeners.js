@@ -105,8 +105,8 @@ fieldCanvas.addEventListener("pointerdown", (event) => {
         position.x,
         position.y,
         0,
-        "24assets/fieldnote.svg",
-        GAMEPIECE_PIXEL_SIZE,
+        pieceMode == PieceMode.ALGAE ? "25assets/algae.svg" : "25assets/coral.svg",
+        pieceMode == PieceMode.ALGAE ? PieceSize.ALGAE : PieceSize.CORAL,
         stageCanvas
       );
 

@@ -9,7 +9,7 @@ const background = document.getElementById("field-background");
 // ---------- Constants ---------- \\
 
 const ROBOT_PIXEL_SIZE = 60;
-const GAMEPIECE_PIXEL_SIZE = 28;
+const GAMEPIECE_PIXEL_SIZE = 20;
 
 // ---------- Document (Enums) ---------- \\
 
@@ -17,6 +17,16 @@ const Alliance = {
   BLUE: 0,
   RED: 1,
 };
+
+const PieceMode = {
+  ALGAE: 0,
+  CORAL: 1,
+};
+
+const PieceSize = {
+  ALGAE: 32,
+  CORAL: 20
+}
 
 const CanvasMode = {
   DELETE: 0,
@@ -40,6 +50,7 @@ var allianceColor = Alliance.BLUE;
 var currentCanvasMode = CanvasMode.DRAG;
 var selectedColor = "#FFF";
 var currentGameStage = GameStage.AUTO;
+var pieceMode = PieceMode.CORAL;
 
 // arrays of both alliance robots
 var redRobots = [];
@@ -143,7 +154,11 @@ function setMode(mode) {
 
   if (currentCanvasMode == CanvasMode.PIECE && mode == CanvasMode.PIECE) {
     document.getElementById("piece-button").style.backgroundImage =
-      "url(24assets/note.svg)";
+      pieceMode == PieceMode.ALGAE
+        ? "url(25assets/display-coral.svg)"
+        : "url(25assets/display-algae.svg)";
+    // Invert to other piece number, (0 or 1)
+    pieceMode = (pieceMode + 1) % 2;
   }
 
   if (currentCanvasMode == CanvasMode.ROBOT && mode == CanvasMode.ROBOT) {
